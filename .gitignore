@@ -26,17 +26,7 @@
 *.bak
 *.orig
 
-# macOS files
-.DS_Store
-
-# Editor directories
-.vscode/
-.idea/
-
 # Ignore compiled class/style files if you keep them built locally
 *.cls
 *.bst
 
-# old versions
-COSMOS-program/previous-drafts
-COSMOS-program/Commented.pdf
