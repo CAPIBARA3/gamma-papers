@@ -1,0 +1,70 @@
+%====================================================
+%  Disclaimer
+%====================================================
+\documentclass[
+    aps,
+    prd,
+    twocolumn,
+    nofootinbib,
+    floatfix,
+    superscriptaddress
+]{revtex4-2}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{microtype}
+\usepackage{enumitem}
+\setlist{nosep}
+\usepackage[
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+]{hyperref}
+
+%===================================================
+
+\begin{document}
+
+\title{Title}
+
+\author{First Author}
+\affiliation{affil}
+
+\author{Second Author}
+\affiliation{affil}
+
+\date{\today}
+
+\maketitle
+
+% Abstract
+\begin{abstract}
+	Abstract.
+\end{abstract}
+
+\tableofcontents
+\vspace{1em}
+
+%====================================================
+\section{Introduction}
+
+% Acknowledgments
+
+\begin{acknowledgments}
+
+\end{acknowledgments}
+
+% Bibliography
+\bibliographystyle{apsrev4-2}
+\bibliography{references}
+
+\end{document}
