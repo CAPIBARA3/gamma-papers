@@ -1,0 +1,223 @@
+\documentclass[11pt]{article}
+
+% --- Packages ---
+\usepackage{amsmath,amssymb}    % math symbols
+\usepackage{graphicx}           % figures
+\usepackage{array}              % tables
+\usepackage{booktabs}           % better tables
+\usepackage{geometry}           % page layout
+\usepackage{natbib}             % bibliography
+\usepackage{hyperref}           % clickable links
+\hypersetup{
+    colorlinks=true,
+    linkcolor=cyan,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+}
+\geometry{a4paper, margin=1in}
+
+\title{The CAPIBARA-COSMOS Program\\
+\large A Pragmatic Student-Led Path to Multi-Satellite High-Energy Astrophysics}
+
+\author{
+Joan Alcaide-Núñez\thanks{Fakultät für Physik, Ludwig-Maximilians-Universität München (LMU Munich), Geschwister-Scholl-Platz 1, 80539 Munich, Germany; \texttt{cosmos.capibara@outlook.com}} \and
+Rosa Bermejo Sabugo\thanks{Facultad de Ciencias, Universidad de Salamanca (USAL), Plaza de los Caídos s/n. 37008 Salamanca, Spain} \and
+Carles Fonseca Mauri\thanks{Department of Physics, University of California Los Angeles (UCLA), 475 Portola Plaza, Los Angeles, CA 90095, United States} \and
+Alessandro Sabia \and
+Martina Solano \and
+for the \textbf{CAPIBARA Collaboration}\footnote{Collaboration for the Analysis of Photonic and Ionic Bursts and RAdiation}}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+    This is our abstract.
+
+\end{abstract}
+
+\textbf{Keywords:} High-energy astrophysics, CubeSat constellations, multi-messenger astronomy, student-led research
+
+\section{Introduction and Motivation}\label{sec:introduction_and_motivation}
+
+A single event observed in August 2017 \cite{nature2017standardsiren} presented the new era of multi-messenger astronomy, where coordinated observations across gravitational wave (GW), neutrino and eletromagnetic (EM) channels will unveil the physics of the most extreme scenarios and cosmic phenomena. High-energy ($\sim$1 keV to few MeV) transient phenomena, for instance gamma-ray bursts (GRBs), magnetar flares and jet-driven events, are expected electromangetic counterparts to many GW sources \cite{nature2017standardsiren, Ioka_2001} like binary neutron star mergers (BNS or NS-NS) or neutron star black hole mergers (NS-BH). Next-generation facilities such as Einstein Telescope (ET) \cite{missing}, Laser Interferometer Space Antenna (LISA) \cite{missing} and Cosmic Explorer \cite{missing} will detect hundreds of gravitational waves yearly, yielding a need for rapid, precise localisated observation of electromagnetic counterparts.
+
+While flagship EM missions like NewAthena (X-ray) \cite{Cruise_2024} and THESEUS ($\gamma$-ray) \cite{Amati_2018} are planned to cover the high-energy spectra in the 2030s, their observing schedules will be shared among many priorities and observation time is constrained. Simulations estimate $10^4$ detections per year with ET, alone from BNS mergers \cite{colombo2025}. This high rate of GW detections makes it impossible for flagship missions to follow-up, creating a pressing need for a dedicated, responsive, all-sky monitor observatory capable of prompt localization.
+
+The CAPIBARA Collaboration, a student-led research group, aims to address this need through the CAPIBARA-COSMOS program. We propose a modular mission that starts with the COSMOS-Duo mission as a pathfinder to build experience and gain knowledge, followed by the COSMOS-Net constellation for continuous, all-sky monitoring. The key goal of the COSMOS program is to leverage existing flight heritage and student-led missions, EIRSAT-1 and GRBAlpha for example, and innovate the next steps towards time-delay localization, a technique that will provide fast and precise alerts for follow-up observations of these transients. In this document, we detail the motivation for this program and our strategic path towards a full operational constellation, emphasizing feasible and modular objectives as well as student training.
+
+\section{Observational Gap}\label{sec:observational_gap}
+
+Current high-energy monitoring relies on aging assets like \textit{Swift} and \textit{Fermi} (launched in 2004 and 2008 respectively), supplemented by newer missions such as Einstein Probe (EP) in the X-rays, SVOM, and the CubeSat-based HERMES in the $\gamma$-rays. A coverage gap emerges towards the beginning of the next decade, between the end of current missions and the full operation of next-generation flagships (see figure \ref{fig:state}). Furthermore, no existing or firmly planned mission combines the following attributes critical for the 2030s multi-messenger landscape:
+
+\begin{enumerate}
+    \item All-sky continuous transient monitoring in the X-ray and soft $\gamma$-ray
+    \item Rapid, arcminute-level localization for precise follow-up observations and host identification
+    \item A scalable, modular and sustainable architecture that can evolve with technological advances and is cost-effective to develop and launch
+\end{enumerate}
+
+The success of pathfinders like GRBAlpha, EIRSAT, BurstCube and HERMES demonstrates the feasibility of student-developed hardware detecting high-energy transients. However, these projects focused on demonstrating the detector technology and basic science return from a single satellite. CAPIBARA-COSMOS builds upon this precedent and heritage by proposing a phased program that evolves from the demonstrator mission COSMOS-Duo to the full constellation COSMOS-Net within an international collaboration of studdent teams to be launched and mainteined over the next 15 years.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{observatory_timeline.png}
+    \caption{Timeline of high-energy and GW observatories from 2010 to 2040, with the revised CAPIBARA-COSMOS roadmap. The program begins with a Foundation phase (Phase 0), progresses to the COSMOS-Duo demonstrator (Phase 1, launch \textasciitilde2030), and scales to the operational COSMOS-NET constellation (Phase 2, deployment mid-2030s). This aligns with the maturation of next-generation GW observatories.}
+    \label{fig:state}
+\end{figure}
+
+\section{CAPIBARA-COSMOS Development Strategy}\label{capibara-cosmos_development_strategy}
+
+The CAPIBARA-COSMOS program has a modular and phased strategy ensuring to gradually build the required experience and with student training in mind. It follows a three-phase roadmap from foundation to pathfinder and then constellation.
+
+\subsection*{Phase 0: Foundation (2024-2026)}
+
+The goal of this early stage is to build the collaboration infrastructure, to learn about the field and analyze its needs and observational gap and draft important documentation such as mission MCD and strategy paper (this document). Since the creation of the CAPIBARA Collaboration in summer 2024, we have learned about high-energy astronomy and refined our strategy to meet its needs and aiming for meaningful, yet student-driven, contributions. Before the end of 2026, our goal is to publish the strategy paper and COSMOS-Duo's MCD (following a FYS! proposal style) as well as to build our Advisory Board (including members of the heritage missions GRBAlpha, HERMES, EIRSAT-1, BurstCube). We will also present at the 5th SSEA Symposium in April 2026.
+
+\subsection*{Phase 1: Pathfinder (2026-2032)}
+
+In order to gain technical knowledge and build experience our strategy is to develop and launch a pathfinder mission first, which will perform time-delay source localization with two separate satellites. Duo-1 and Duo-2 will be two 3-6U CubeSats with the already tested and flight-proved detector technology from heritage missions (see Section \ref{sec:technical_feasibility_and_heritage})
+
+In order to gain technical knowledge and build experience our strategy is to develop and launch a pathfinder mission first, which will demonstrate time-delay source localization with two separate satellites.
+
+Duo-1 and Duo-2 are two 3-6U CubeSats with the already tested and flight-proved detector technology from heritage missions, but with the specific hardware and software to be able to fly coordinately and to perform time-delay localization. They would launch via an educational program (e.g., FYS! 2030) or alternatively via commercial rideshare.
+
+\subsection*{Phase 2: Constellation (2031-2040)}
+
+This is the direct next step, extending our flight-proven COSMOS-Duo mission with more satellites with our continued partnership with universities. We aim for launching between 4-6 more satellites, depending on funding and university partnerships at the moment. Together with COSMOS-Duo this will introduce a network of 6-8 CubeSat observatories continuously monitoring the full sky for high-energy transients and GW counterparts. The focus of this mission is scientific return and constellation operatation and coordination. The capabilities of COSMOS-Net to autonomously provide rapid and precise localizations at any time anywhere will integrate our mission into the broader multi-messenger alert network (GCN) \footnote{\href{https://gcn.nasa.gov}{https://gcn.nasa.gov}}. Older or matlfunctioning satellites can be de-orbited when they reach the end of their lifetimes, and new satellites can be launched by continued or new partnership engagement. Thus the modular design proves to be sustainable in the long-term, providing uninterrupted observations.
+
+\section{Time-Delay Localization}\label{sec:time-delay_localization}
+
+The key innovation of the COSMOS program is to leverage the already developed high-energy observing capabilities from heritage missions and introduce arcminute-level source localization via coordinated observations. This is a known concept in physics, for instance various GW observatories (LIGO, VIRGO and KAGRA) together can further constraint the sky coordinates of a signal than a single one \cite{missing}. The interplanetary network (IPN) \footnote{\href{https://heasarc.gsfc.nasa.gov/w3browse/all/ipngrb.html}{https://heasarc.gsfc.nasa.gov/w3browse/all/ipngrb.html}} also used this technique with high-energy space telescopes to locate astrophysical sources. Now, we want to leverage the existing CubeSat technology for high energy astronomy to provide such measurements.
+
+The main idea is that comparing the signals from the same source detected by different satellites we can tighter constrain the origin of the source, in terms of celestial coordinates. For two satellites separated at baseline distance $\mathbf{B}$ and the time-delay between both detectors is $\Delta t = t_2 - t_1$ then the direction of the source in the sky is given by
+
+\begin{equation}
+    c\Delta t = \hat{s} \mathbf{B}.
+\end{equation}
+
+
+With two satellites, one can only constrain a hyperbolic region projected on the celestial sphere rather pointing out a specific direction. Our COSMOS-Duo mission is designed to demonstrate this method and the necessary technology, measuring around 10 bright bursts, without providing revolutionary data since it is a pathfinder.
+
+With three or more satellites, time-delay localization is called \textit{triangulation}, which is a more familiar term. Let us call the time-delay between two satellites $i$ and $j$ $\delta t_{ij}$ and its baseline distance $\mathbf{B}_{ij}$. As before, solving the equation
+
+\begin{equation}
+    \left(\begin{matrix} \mathbf{B}_{21} \\ \mathbf{B}_{31} \end{matrix} \right) \hat{s} = c \left(\begin{matrix}\Delta t_{21} \\ \Delta t_{31}\end{matrix}\right)
+\end{equation}
+
+will provide us with the direction vector. Note that we don’t need to include $\mathbf{B}_{32}$ since it does not introduce more information to the system. This time, since this vector has two degrees of freedom
+
+\begin{equation}
+	\hat{s} (\alpha, \beta) = \left( \begin{matrix} \cos\alpha\cos\beta \\ \sin\alpha\cos\beta \\ \sin\beta \end{matrix}\right)
+\end{equation}
+
+and we have 2 or more equations from measuring the different time-delays and baselines, we will be able to compute a precise sky localization.
+
+That said, it is important to consider how measurement uncertainties in the time-delay and the baseline distance do propagate to the localization precision. We can rewrite the previous equations with the uncertainties
+
+\begin{equation}
+	(\mathbf{B} + \delta \mathbf{B}) \cdot (\hat{s} + \delta \hat{s}) = c(\Delta t + \delta t).
+\end{equation}
+
+By subtracting the already known relation we get:
+
+\begin{equation}
+	\delta \mathbf{B} \cdot \hat{s} + \mathbf{B} \cdot \delta \hat{s} = c \delta t
+\end{equation}
+
+Note that in the term $\delta \mathbf{B} \cdot \hat{s}$, the perpendicular part of $B$ vanishes, since the error only propagates parallel to the direction vector. Additionally, we can rewrite the term $\mathbf{B} \cdot \delta \hat{s} = |\mathbf{B}_\perp| \delta \theta$ with $\mathbf{B}_\perp = \mathbf{B} \cdot \sin\phi$ and $\phi$ the angle between $\mathbf{B}$ and $\hat{s}$ and $\theta$ the angle between $\mathbf{B}_\perp$ and $\hat{s}$. Thus, to compute the localization uncertainty, that means the uncertainty in the angle, we can write
+
+\begin{equation}
+	\sigma_\theta = \frac{1}{|\mathbf{B}_\perp|} \sqrt{(c \sigma_t)^2 + \sigma_{B, ||} ^2}.
+\end{equation}
+
+For reference, given $\sigma_t = 100 {\ \mathrm{ns}}$ and $\sigma_{B, \parallel} \approx 10 {\ \mathrm{m}}$, we obtain the values in table \ref{tab:angular_uncertainty}.
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{cccc}
+        \hline
+        \textbf{Case} & \textbf{Distance (m)} & $\boldsymbol{\sigma_\theta}$ \textbf{(rad)} & $\boldsymbol{\sigma_\theta}$ \textbf{(degrees)} \\
+        \hline
+        1 & 100  & 0.316  & 18.1 \\
+        2 & 250  & 0.126  & 7.22 \\
+        3 & 500  & 0.0632 & 3.62 \\
+        4 & 1000 & 0.0316 & 1.81 \\
+        \hline
+    \end{tabular}
+    \caption{Angular uncertainty as a function of satellite baseline distance}
+    \label{tab:angular_uncertainty}
+\end{table}
+
+
+
+Note that $\sigma_\theta \sim \frac{1}{\mathbf{B}_\perp}$, thus as the baseline gets larger, the uncertainty decreases.
+
+
+
+\textcolor{red}{How does the uncertainty improve with more than 3 satellites, i.e., once that the 2-degrees-of-freedom-problem are covered?}
+
+\section{Scientific Objectives}\label{sec:scientific_objectives}
+
+The modular design of the COSMOS program is reflected onto progressive scientific returns aligned with the technical capabilities. The focus with COSMOS-Duo will be to demonstrate time-delay arcminute-level localization of $\sim10$ bright GRBs and study the detected events in detail to enhance our algorithms and localization methods. This alone already is a step beyond past missions in the field, and will provide the first trasient data from the COSMOS program.
+
+During the COSMOS-Net mission, our aim is to distribute arcminute-scale, rapid localizations and transient alerts. This will enhance our capabilities for host galaxy identification of GW events (crucial for redshift measurements), probe GRB jet physics through precise localization, and generate a vast catalog for population studies. Every data product of the program will be made available for everyone on an open science basis.
+
+Inside the CAPIBARA Collaboration some research initiatives have emerged, on how we could use this data to learn about the universe, GRBs and AGN. Of course, these ideas live in a broader scientific community, since they rely on other observatories data, which complement COSMOS.
+
+\section{Technical Feasibility and Heritage}\label{sec:technical_feasibility_and_heritage}
+
+The strategy of the COSMOS program directly leverages flight-proven detector technology from heritage missions, consisting of CsL or GAGG(Ce) scintillator with SiPM or CZT readout detectors covering the $10-2000 {\ \rm keV}$. Building identical satellites allows for cross-check and halves the design burden.
+
+Additionally, the modular design of the satellite network is risk mitigating: one CubeSat can fail, but the mission goal and capabilities still stand with the rest of the constellation. Our pathfinder-first approach, ensures that we build the sufficient flight experience and knowledge of the technical details before advacing to a full constellation.
+
+Our Advisory Board provides crucial advice and guidance in the form of structured mentorship. By proofchecking our designs and progress, we expect this to be a great opportunity for student training and growth.
+
+The greater risks and challenges of the COSMOS program are the development of working and efficient software for autonomous transient recognition and rapid localization as well as the constellation coordination. A key point in these innovations is the time keeping system, which allows for precise time-delay localization and constellation orbiting. We plan to use a GPS-synchronized clock with $\sim 100 {\ \rm ns}$ accuracy for time-delay measurements.
+
+\section{Resources and Funding}\label{sec:resources_and_funding}
+
+The CAPIBARA Collaboration is a group of students and relies on the partnerships with universities and space technology companies. We also take into account our constrained funding possibilities. It is note worthy, that every member of the COSMOS program and the CAPIBARA Collaboration, including the Advisory Board members, works on the project on a voluntary and non financially remunerated basis.
+
+The COSMOS-Duo mission is based on in-kind lab access for the manufacturing of the CubeSats. We expect to launch a crowdfunding campaign for the materials and fabrication costs, but are also seeking other sources of funding for these purposes. For the launch, we are looking forward to apply to the next edition of ESA's Fly Your Satellite! Program or similar educational initiatives by space agencies or private launcher companies.
+
+For the COSMOS-Net mission we will have reached a greater collaboration size with a ratio of 1 satellite per university partnership as our minimum. Funding and launch options are still due to being discussed. We will update this document promptly.
+
+\section{Broader Impact and Legacy}\label{sec:broader_impact_and_legacy}
+
+The CAPIBARA-COSMOS program aims to have a lasting legacy beyond the immediate technical and scientific returns. As an international student-led initiative, we see education and equality of opportunities at the core of our principles. The program increases its complexity and size gradually, allowing student to build valuable hands-on experience before their reach professional careers. Furthermore, CAPIBARA is an environment where students from all backgrounds can thrive and contribute to real space missions.
+
+Moving forward, the COSMOS-Net constellation will provide key observations of the high energy transient universe, which is key for the gravitational wave observatories and other advanced telescopes like JWST and the Vera Rubin Observatory to maximize their scientific return. By providing early warnings and precise localizations, COSMOS-Net will be a relevant asset for time domain and multi-messenger astronomy in the 2030s and beyond. In addition, all data, documentation and software developed within the COSMOS program will be made publicly available on an open science vision. We aim to democratize access to space science and foster international collaboration, especially among students.
+
+\section{Conclusion}\label{sec:conclusion}
+
+This is our Conclusion.
+
+\section*{Acknowledgments}
+
+We are grateful to the members of the CAPIBARA Collaboration for useful discussions and feedback. The COSMOS program is part of the CAPIBARA Collaboration, an international student initiative to explore the high energy universe. We would like to specifically acknowledge the pioneering work of the GRBAlpha, EIRSAT and HERMES teams, whose heritage and mentorship are central to our plan. We thank the developers of the open-source tools used in this work. We welcome feedback and collaboration, please contact the corresponding author or visit our website: \href{https://capibara3.github.io/contact}{capibara3.github.io/contact}.
+
+\subsection*{Author Contributions}
+
+J.A.N. conceived the initial mission concept, led the CAPIBARA-COSMOS program and wrote the first draft of this manuscript. A.S. contributed to the Time-Delay Localisation section.
+
+\textit{X.Y.Z contributed to the ... and ... sections. A.B.C. developed ... and ....}
+
+\subsection*{Code and Data Availability}
+
+All data and code used in this work is publicly available at the \href{https://github.com/capibara3/cosmos-obs-stats}{cosmos-obs-stats} GitHub repository.
+
+\subsection*{Conflict of Interest}
+The authors declare no conflict of interest.
+
+% --- References ---
+% \bibliographystyle{plain}
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+
+\end{document}
