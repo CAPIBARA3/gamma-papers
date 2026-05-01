@@ -1,13 +1,10 @@
-%====================================================
-%  Disclaimer
-%====================================================
 \documentclass[
     aps,
     prd,
     twocolumn,
     nofootinbib,
     floatfix,
-    superscriptaddress
+    superscriptaddress,
 ]{revtex4-2}
 
 \usepackage[T1]{fontenc}
@@ -22,13 +19,10 @@
 \usepackage{array}
 \usepackage{microtype}
 \usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
 \setlist{nosep}
-\usepackage[
-    colorlinks=true,
-    linkcolor=blue,
-    citecolor=blue,
-    urlcolor=blue
-]{hyperref}
 
 %===================================================
 
@@ -37,19 +31,18 @@
 \title{Gamma-ray Analysis for Multi-Messenger Astrophysics: GAMMA}
 
 \author{Joan Alcaide-Núñez}
-\affiliation{Ludwig-Maximilian-Universität München (LMU München), Munich, Germany}
+\affiliation{Department of Physics, Ludwig-Maximilians-Universität München, Geschwister-Scholl-Platz 1, D-80539 München, Germany}
 
 \author{Martina Solano Soto}
-\affiliation{affil}
+\affiliation{affiliation}
 
 \date{\today}
 
 \maketitle
 
 % Abstract
-\begin{abstract}
-	Abstract.
-\end{abstract}
+%\begin{abstract}
+%\end{abstract}
 
 \tableofcontents
 \vspace{1em}
@@ -58,27 +51,74 @@
 \section{Introduction}
 The Gamma-ray Analysis for Multi-Messenger Astrophysics (GAMMA) initiative is a project by the CAPIBARA Collaboration with the goal to study the high-energy, gamma-ray phenomena in the universe and launch a CubeSat to observe these events. In this white paper, we provide a set of compelling open problems that motivate the development and launch of such a mission.
 
-In the 2020 decadal survey \cite{missing}, it was pointed out that multi-band, that means acros the electromagnetic spectrum, and multi-messenger, that means combining different "messengers" such as light, GW and neutrino, detections were to be prioritized in the next years. Currently operating flagship gamma-ray observatories have long passed their main operation lifetimes, and new replacements are still in very early phases.
+In the 2020 decadal survey \cite{2020_astro_decadal}, it was pointed out that multi-band, that means acros the electromagnetic spectrum, and multi-messenger, that means combining different "messengers" such as light, GW and neutrino, detections were to be prioritized in the next years. Currently operating flagship gamma-ray observatories have long passed their main operation lifetimes, and new replacements are still in very early phases.
 
-Professionally or student developed CubeSats with miniaturized detector technology have proven to be able to successfully detect gamma-ray bursts (GRBs) \cite{EIRSAT-1, GRBalpha, HERMES, BurstCube}. However, gamma-ray photons cannot be focused as with a traditional optical telescope. A good way around to accurately observing and locating GRBs is to perform triangulation with multiple satellites in orbit. Therefore, having multiple missions with large fields of view and good resolution capabilities is of very much importance for the proper study of this astrophysical phenomena.
+Professionally or student developed CubeSats with miniaturized detector technology have proven to be able to successfully detect gamma-ray bursts (GRBs) \cite{Murphy_2021, ripa2026grbalphavzlusat2grbbeta, Fiore_2020}. However, gamma-ray photons cannot be focused as with a traditional optical telescope. A good way around to accurately observing and locating GRBs is to perform triangulation with multiple satellites in orbit. Therefore, having multiple missions with large fields of view and good resolution capabilities is of very much importance for the proper study of this astrophysical phenomena.
 
 Missing clear explanation of what are gamma-ray bursts and why we need to send detectors to orbit?
 
 
 %====================================================
-\section{Multi-Messenger Astronomy}
+\section{Multi-Messenger Astronomy}\label{sec:mma}
 
 
 
 %====================================================
 \section{Cosmology: GRBs as High-$z$ Probes}
 
+\subsection{Cosmological Models and Tensions}
 
-\begin{itemize}
-	\item intro to cosmology: the LambdaCDM model as the model of the universe (explaining accelerated expansion from EFE)
-	\item explain the problem of the Hubble tension (what is wrong with our current standard model of the universe?)
-	\item how GRB can be used to probe the high-z redshift, why does it matter to probe high-z and what do we need in terms of instrumentation
-\end{itemize}
+Since the late 1920s, we know that the universe is in expansion \cite{Hubble_1929, Lemaitre_1927}, this lead to the development of the 'Big Bang theory' later confirmed by the observation of the Cosmic Microwave background (CMB) \cite{Penzias_Wilson_1965, Dicke_1965}. In the 1990s, the expansion of the universe was found to be accelerated using Ia SNe observations \cite{Riess_1998, Perlmutter_1999}, motivating the description of the expansion rate as a time-dependant parameter $H(t)$ (Hubble parameter), with $H_0 = H(t_0)$. The relation between the distance $d_L$ and the redshift $z \propto v_\text{radial}$ is then given by the luminosity distance function:
+
+$$
+d_L (z, \overline\Omega) = (1+z) \frac{c}{H_0} \int_0 ^{z^\prime} \frac{dz^\prime}{E(z)}
+$$
+
+where $H_0$ is the Hubble-Lemaître constant (the present time rate of expansion) and $E(z)$ is the dimensionless Hubble parameter, which is different regarding the cosmological model one considers. The current standard model in cosmology $\Lambda$CDM assumes the dominance of cold dark matter (CDM) and a cosmological constant denoted $\Lambda$ \cite{missing}. Deriving from the Friedmann equations \cite{missing} (which is a description of the universe treating its components as fluids) we obtain
+$$
+E^2(z) = \left(\frac{H(t)}{H_0}\right)^2 = \Omega_r a^{-4} + \Omega_m a^{-3} + \Omega_k a^{-2} + \Omega_\Lambda
+$$
+where $a$ is the scale factor set to $a(t_0) = a_0 = 1$ and $\Omega_i$ are the energy density parameters for each component of the Universe's energy. According to $\Lambda$CDM these are the components contributing to the total energy density of the universe \cite{missing}:
+
+$$
+\begin{cases}
+	\text{radiation}: \Omega_r \\
+	\text{matter}: \Omega_m \\
+	\text{curvture (geometric)}: \Omega_k \\
+	\text{dark energy}: \Omega_\Lambda
+\end{cases}
+$$
+
+Most of the time, a \textit{flat} $\Lambda$CDM model is assummed $\Omega_\Lambda + \Omega_m = 1$ with $\Omega_k = \Omega_r = 0$ (due to flatness and negligible constribution of radiation). When not trying to constraint the cosmology, and assuming a standard cosmological $\Omega_\Lambda = 1-\Omega_ = h_0 = 0.7$ is also assumed, agreeing enough with estimated values for these parameters and $h_0 := H_0/100$.
+
+In recent times, attention has been drawn to the so-called 'Hubble Tension', an open problem in cosmology in which measurements of $H_0$ don't agree between early-universe CMB and late-time local distance ladder observations \cite{Di_Valentino_2021, riess2025perfecthostjwstcepheid, Tristram_2024}. More recently, in the era of 'precision cosmology' this tension, alongside the $\sigma_8$ \cite{missing} and $\Omega$ \cite{missing, see rebecca} tensions have become even more obvious. These tensions alongside the fine-tuning problem of the cosmological constant $\Lambda$ \cite{missing} and the growing evidence of dynamical dark energy (DDE) \cite{lodha2025extendeddarkenergyanalysis} contrasting previous results and assumptions has motivated the search of alternative methods to measure cosmological parameters and test proposed alternative models.
+
+\subsection{GRBs as Cosmological Probes}
+
+Gamma-ray bursts are amongs the most luminous astromical events in the Universe and are visible at large distances, making their potential use as high-$z$ cosmological probes compelling. However, GRBs are not standard candles, and we rely on empirical relations between observables to compute our luminosity distance and thus test different cosmologies. Multiple potential relations to 'standardize' GRBs have been proposed \cite{ghirlanda200X}.
+
+When utilizing GRBs to probe the cosmological parameters, we encounter the circularity problem, which is that we need to assume a cosmology $\overline\Omega$ in order to compute the fit to the empirical relation, which we want to use to constraint the parameters. For example, the Amati relation relates the peak spectral energy $(E_\text{peak})$ and the isotropic equivalent energy $(E_\text{iso})$ and is written as:
+$$
+E_\text{peak} = a \cdot E_\text{iso}^b
+$$
+
+this can be used to contraint the cosmology since $E_\text{iso}$ is computed from the observed fluence $\mathcal{F}$ relying on the luminosity distance by
+$$
+E_\text{iso} (\overline\Omega) = 4\pi \mathcal{F} d_L (z, \overline\Omega) /(1+z)
+$$
+
+In this case, in order to compute $(a,b)$ we need to assume $\overline\Omega$. The circularity problem is avoided by computing the empirical relation fit for a set of possible cosmologies, among which the 'best cosmology' is assumed to be the one with the least scatter in the empirical relation.
+
+Key instrumentation requirements for this purpose is a broad energy range, including high-energy $\gamma$-ray sensitivity and enough energy resolution, allowing to accurately measuring $E_\text{peak}$. Additionally, a broad field of view contributes to increasing the chances of detecting this short-lived transient events, more data . According to estimates \cite{alcaide2026}, $0000$ detections with average uncertainty of $\sigma_E = 0.00$ are required to constrain cosmological parameters to a $10\%$ error with $99\%$ certainty.
+
+While GRBs are sensitive to dark energy and matter energy density parameters fairly well, since there are no close anchors, GRBs do badly constraint $H_0$, indeed it's introduction as a free parameter brings in a degeneracy with the empirical relation. That is why GRBs are better used as a complementary information to another probe, such as GW luminosity distance data. \cite{alcaide2026}
+
+\textcolor{red}{how much energy resolution for $X\%$ error on energy? What about other empirical relation's requirements?}
+
+\subsection{Multi-Messenger Cosmology}
+
+\textbf{what does GW work so well together with GRB when constraining cosmologies? first write \ref{sec:mma}, since it build on that}
+
 
 
 %====================================================
@@ -96,6 +136,14 @@ Missing clear explanation of what are gamma-ray bursts and why we need to send d
 
 % insert table
 
+\textbf{Section: COSMOLOGY: GRBS AS HIGH-$z$ PROBES}
+
+\begin{itemize}
+	\item high enough energy and spectral resolution to accurately identify $E_\text{peak}$
+	\item broad energy range (especially towards higher energies) to don't be blind to $E_\text{peak}$
+	\item broad field of view (to observe more GRBs)
+\end{itemize}
+
 
 %====================================================
 \section{Conclusions}
@@ -109,5 +157,4 @@ Missing clear explanation of what are gamma-ray bursts and why we need to send d
 % Bibliography
 \bibliographystyle{apsrev4-2}
 \bibliography{references}
-
 \end{document}
