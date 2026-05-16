@@ -21,6 +21,8 @@
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
 
 \setlist{nosep}
 
@@ -34,9 +36,6 @@
 \affiliation{Department of Physics, Ludwig-Maximilians-Universität München, Geschwister-Scholl-Platz 1, D-80539 München, Germany}
 
 \author{Martina Solano Soto}
-\affiliation{affiliation}
-
-\author{Alessandro Sabia}
 \affiliation{affiliation}
 
 \author{Alessandro Sabia}
@@ -103,9 +102,9 @@ In recent times, attention has been drawn to the so-called 'Hubble Tension', an 
 
 Gamma-ray bursts are amongs the most luminous astromical events in the Universe and are visible at large distances, making their potential use as high-$z$ cosmological probes compelling. However, GRBs are not standard candles, and we rely on empirical relations between observables to compute our luminosity distance and thus test different cosmologies. Multiple potential relations to 'standardize' GRBs have been proposed \cite{ghirlanda200X}.
 
-When utilizing GRBs to probe the cosmological parameters, we encounter the circularity problem, which is that we need to assume a cosmology $\overline\Omega$ in order to compute the fit to the empirical relation, which we want to use to constraint the parameters. For example, the Amati relation relates the peak spectral energy $(E_\text{peak})$ and the isotropic equivalent energy $(E_\text{iso})$ and is written as:
+When utilizing GRBs to probe the cosmological parameters, we encounter the circularity problem, which is that we need to assume a cosmology $\overline\Omega$ in order to compute the fit to the empirical relation, which we want to use to constraint the parameters. For example, the Amati relation relates the intrinsic spectral peak energy $(E_\text{peak})$ and the isotropic equivalent energy $(E_\text{iso})$ and is written as:
 $$
-E_\text{peak} = a \cdot E_\text{iso}^b
+E_\text{p,i} = a \cdot E_\text{iso}^b
 $$
 
 this can be used to contraint the cosmology since $E_\text{iso}$ is computed from the observed fluence $\mathcal{F}$ relying on the luminosity distance by
@@ -121,9 +120,73 @@ While GRBs are sensitive to dark energy and matter energy density parameters fai
 
 \textcolor{red}{how much energy resolution for $X\%$ error on energy? What about other empirical relation's requirements?}
 
+Key instrument requirements for this purpose include a broad energy range (typically from $10\ \mathrm{keV}$ up to several $\mathrm{MeV}$) to ensure the spectral peak energy $E_\text{p, i}$ is not missed, alongside a sufficient energy resolution $(\Delta E/E \approx 10-20 \%)$ to accurately fit the spectrum. Additionally, a broad field of view contirbutes to increasing the chances of detecting these short-lived transient events, drastically improving the statistical power of the cataloag. According to Fisher matrix forecasts, roughly 800 to 1,000 detections with an average measurement uncertainty of $0.10\ \mathrm{dex}$ (which translates to approximately $25\%$ error on the energy observables) are required to constrain the matter density parameter $\Omega_m$ to a $10\%$ precision level using the Amati relation. Reaching a $1\%$ precision scale requires a sample sizes in the tens of thousands due to the hard mathematical floor established by the intrinsic scatter of these relations.
+
+While the Amati relation relies solely on prompt gamma-ray emission, other empirical relations can tighten this intrinsic scatter but pose stricter multi-wavelength requirements. For instance, the Ghirlanda relation connects the peak energy to the collimated true energy $(E_\gamma)$ and features a significantly lower intrinsic scatter $(\approx 0.10 \ \mathrm{dex})$. However, utilizing it requires precise X-ray or optical follow-up to observe the afterglow jet break time and calculate the opening angle $\theta_j$. Because GRBs lack low-redshift anchors, they struggle to independently constrain the Hubble constant $H_0$, creating a degeneracy with empirical relation's zero-point. Therefore, GRBs are most powerful when utilize as complementary probes alongside gravitational wave luminosity distance data.
+
 \subsection{Multi-Messenger Cosmology}
 
 \textbf{what does GW work so well together with GRB when constraining cosmologies? first write \ref{sec:mma}, since it build on that}
+
+\subsection{GRB Statistics Estimations}
+
+In order to compute cosmological parameteres with accuracy a large sample of GRBs is needed, so that the fit of the empirical relation and over the cosmological parameter space has as lowest error uncertainty as possible. We compute the number of GRBs necessary to observe with average measuremeng uncertainty $(0.01 \mathrm{dex}< \sigma_\mathrm{obs} < 0.2 \mathrm{dex})$ to obtain $10\%$ and $1\%$ precision on $\Omega_m$. For the the error uncertainty propagation we compare 3 different standard empirical relations: Amati, Yonetoky, Ghirlanda relation \citep{ghirlanda200X}.
+
+\begin{itemize}
+	\item Amati: $E_\mathrm{p, i} \propto E_\mathrm{iso}^a$
+	\item Yonetoku: $E_\mathrm{p, i} \propto L_\mathrm{iso}^b$
+	\item Ghirlanda: $E_\mathrm{p, i} \propto E_\gamma ^c$
+\end{itemize}
+
+Where $a,b,c$ are free parameters, $L_\mathrm{iso}$ is the isotropic Luminosity, which is related to the luminosity distance by $d_L (z) = (L_\mathrm{iso} / 4\pi F)^{1/2}$, and $E_\gamma$ is the collimation corrected energy, $E_\gamma = E_\mathrm{iso} (1-\cos \theta_j)$ with $\theta_j$ being the jet opening angle. $E_\gamma$ can only be computed if $\theta_j$ is known, i.e., if the jet break time $t_\mathrm{break}$ is observed in the afterglow, thus highlighting the importance of rapid alerts and follow-up observations in multiple energy ranges.
+
+Since GRBs are supposed to be jet-drive phenomena, due to relativistic aberration an observer only 'see' photons within a cone of aperture defined by $\theta_\Gamma \propto \Gamma^{-1}$ where $\Gamma$ is the bulk Lorentz factor of the emitting material. This emitting material gets slowed down by the medium around the GRBs source, thus as the jet travels, $\Gamma$ diminishes and $\theta_\Gamma$ increases. During this time the observer perceives increasing luminosity, since the cone diameter gets larger, and then a peak and an afterglow as the emission decreases. The turning point happens when $\theta_\Gamma = \theta_j$, then the totality of the jet's surface is visible and there is a sudden decrese in luminosity. If we approximate the afterglow emission as al inear function over time, then the slope becomes smaller.
+
+To compute the estimations on the sample size for each realtion, we employ the Fisher information matrix for any relation $X-Y$ we write, Y corresponds to a different obserable in each relation (see. Table \ref{tab:grb}.
+$$
+\log_{10} Y = a + b \log_{10} E_{p,i}
+$$
+where $Y$ is mathematically related to $d_L(z)$, we shall write
+$$
+Y = 4\pi d_L^2(z) \cdot X_\mathrm{obs} \cdot (1+z)^\alpha
+$$
+Given the distance modulus
+$$
+\mu(z) = 5 \log_{10} \left(\frac{d_L (z)}{\mathrm{Mpc}}\right) +25
+$$
+Then by substituting into the distance modulues we find
+$$
+\mu(z) = \frac{5}{2} \left[a + b\log_{10} E_\mathrm{p,i} - \log_{10} X_\mathrm{obs} - \alpha \log_{10} (1+z) - \log_{10}(4\pi) \right] + 25.
+$$
+
+
+\begin{table}[htbp]
+	\centering
+	\caption{Gamma-Ray Burst Relations}
+	\label{tab:grb}
+	\small
+
+	\begin{tabular}{l l l c}
+		\hline
+		\textbf{Relation} & $\mathbf{Y}$ & $\mathbf{X_\mathrm{obs}}$ & \textbf{$\alpha$} \\
+		\hline
+		Amati & $E_{\mathrm{iso}}$ & $S_\mathrm{bolo}$ (bolometric fluence) & $-1$ \\
+		\hline
+		Ghirlanda & $E_{\gamma}$ & $S_\mathrm{bolo} (1-\cos\theta_j)$ & $-1$ \\
+		\hline
+		Yonetoku & $L_{\mathrm{iso}}$ & $P_{bolo}$ (peak flux) & $0$ \\
+		\hline
+	\end{tabular}
+\end{table}
+
+Then, applying standard error propagation taking into account the intrinsic physical scatter $\sigma_\mathrm{int}$ together with the measurement uncertainties follows:
+$$
+\sigma_\mu = \frac{5}{2} \sqrt{\sigma_\mathrm{int}^2 + b^2 \sigma_{\log E_\mathrm{p,i}}^2 + \sigma_{\log X_\mathrm{obs}}^2}
+$$
+
+The intrinsic error respresents a fixed, intrinsic variation in the empirical relation. It ranges from $\sigma_\mathr{int} \approx 0.10 \mathrm{dex}$ for Ghirlanda to $\sigma_\mathrm{int} \appro 0.30 \mathrm{dex}$ for Amati and Yonetoku. In order to project these errors into the computation of a cosmological parameters such as $\Omega_m$, we calculate the Fisher Information Matrix $F$.
+
+\textcolor{red}{missing: finish writting up the math and introduce the results for the simulations using the figure grb_statistics_estimations.pdf
 
 
 
